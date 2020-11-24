@@ -39,6 +39,7 @@
             android:id="@+id/txtChatWindow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="28dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20sp" />
     </LinearLayout>
@@ -73,11 +74,11 @@
         android:layout_marginHorizontal="10dp"
         android:background="@drawable/chatmessagebackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/imgSendMessage"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgSendMessage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/send_icon"

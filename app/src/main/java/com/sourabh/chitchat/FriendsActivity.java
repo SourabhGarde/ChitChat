@@ -31,6 +31,7 @@ public class FriendsActivity extends AppCompatActivity {
     UsersAdapter.OnUserClickListener onUserClickListener;
 
     private SwipeRefreshLayout swipeRefreshLayout;
+    String myImageUrl;
 
 
     @Override
@@ -54,8 +55,13 @@ public class FriendsActivity extends AppCompatActivity {
         onUserClickListener= new UsersAdapter.OnUserClickListener() {
             @Override
             public void onUserClicked(int position) {
-                startActivity(new Intent(FriendsActivity.this,MessageActivity.class));
-                Toast.makeText(FriendsActivity.this, "Tapped on user "+users.get(position).getUserName(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(FriendsActivity.this,MessageActivity.class)
+                        .putExtra("username_of_roommate",users.get(position).getUserName())
+                        .putExtra("email_of_roommate",users.get(position).getEmail())
+                        .putExtra("img_of_roommate",users.get(position).getProfilePicture())
+                        .putExtra("my_image",myImageUrl)
+                );
+
 
             }
         };
@@ -91,6 +97,13 @@ public class FriendsActivity extends AppCompatActivity {
                 recyclerView.setAdapter(usersAdapter);
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.VISIBLE);
+
+                for (User user: users){
+                    if(user.getEmail().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+                        myImageUrl=user.getProfilePicture();
+                        return;
+                    }
+                }
             }
 
             @Override
