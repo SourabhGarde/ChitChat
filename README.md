@@ -1,2 +1,3 @@
 # ChitChat
-1st App, Chitchat
+- An Instant Messaging App for Android.
+- Google's Firebase for Data Storage and Backup
